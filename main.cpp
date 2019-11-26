@@ -243,7 +243,7 @@ void Menu() {
       
       cin >> input_number;
       if (ifNodeExists(root, input_number)) {
-			  deleteNode(root, input_number);
+			  root = deleteNode(root, input_number);
 			  cout << "Deleted element: "<< input_number << endl;
       }
       else {
