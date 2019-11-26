@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>  
-#define COUNT 10
+#define COUNT 20
 //labas
 using namespace std;
 
