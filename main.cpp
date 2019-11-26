@@ -174,10 +174,11 @@ void Menu() {
   while(choice != 1)
   {
     system("cls");
-    cout << "             MENU\n";
+    cout << "____________________________________________\n";
+    cout << "                   MENU\n";
     cout << "#1. Create Binary Search Tree in Console.\n";
     cout << "#2. Create Binary Search Tree from .txt file.\n";
-
+    cout << "____________________________________________\n";
     cin >> choice;
     if (choice == 1)
     {
@@ -221,7 +222,7 @@ void Menu() {
   while (true)
   {
 		system("cls");
-
+    cout << "___________________________________\n";
 		cout << "             MENU\n";
 		cout << "#1. Add new element to Binary Tree\n";
 		cout << "#2. Delete element from Binary Tree\n";
@@ -229,7 +230,7 @@ void Menu() {
 		cout << "#4. What's height of Binary Tree?\n";
 		cout << "#5. Show Binary Tree\n";
 		cout << "#6. Exit\n";
-
+    cout << "___________________________________\n";
 		cin >> choice;
 
 		if (choice == 1)
@@ -241,8 +242,14 @@ void Menu() {
 			cout << "Delete element from Binary Tree\nEnter number: ";
       
       cin >> input_number;
-      deleteNode(root, input_number);
-    }
+      if (ifNodeExists(root, input_number)) {
+			  deleteNode(root, input_number);
+			  cout << "Deleted element: "<< input_number << endl;
+      }
+      else {
+        cout << "Element doesn't exist: "<< input_number << endl;
+      }
+		}
 		else if (choice == 3)
     {
 			cout << "Find element in Binary Tree\nEnter number: ";
