@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>  
 #define COUNT 10
-
+//labas
 using namespace std;
 
 // A binary tree node  
