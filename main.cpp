@@ -1,6 +1,7 @@
 //#include<bits/stdc++.h>  
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
 #define COUNT 10
 
 using namespace std;
@@ -241,7 +242,7 @@ void Menu() {
 		{
 			cout << "Input a size of Binary Tree: ";
 			cin >> size;
-			int* tree = new int[size];
+			tree = new int[size];
 			break;
 		}
 		else if (choice == 2)
@@ -265,7 +266,7 @@ void Menu() {
 		if (fd.is_open())
 		{
 			fd >> size;
-			int* tree = new int[size];
+			tree = new int[size];
 			for (int i = 0; i < size; i++)
 			{
 				fd >> tree[i];// Now we have our binary tree numbers stored in tree[] array
