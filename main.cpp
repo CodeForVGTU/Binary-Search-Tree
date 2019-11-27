@@ -26,6 +26,7 @@ struct Node
 // It does reverse inorder traversal  
 void print2DUtil(Node* root, int space)
 {
+	counter++;
 	// Base case  
 	if (root == NULL)
 		return;
@@ -47,8 +48,9 @@ void print2DUtil(Node* root, int space)
 	print2DUtil(root->left, space);
 }
 
-void print_to_File(Node* root, int space, ofstream &fr)
+void print_to_File(Node* root, int space, ofstream& fr)
 {
+	counter++;
 	// Base case  
 	if (root == NULL)
 		return;
@@ -84,7 +86,7 @@ void print2D(Node* root)
 }
 struct Node* insert(struct Node* Node, int data)
 {
-  counter++;
+	counter++;
 	/* If the tree is empty, return a new node */
 	if (Node == NULL) return newNode(data);
 
@@ -101,7 +103,7 @@ struct Node* insert(struct Node* Node, int data)
 
 bool ifNodeExists(struct Node* Node, int key)
 {
-  counter++;
+	counter++;
 
 	if (Node == NULL)
 		return false;
@@ -120,7 +122,7 @@ bool ifNodeExists(struct Node* Node, int key)
 
 int maxDepth(Node* Node)
 {
-  counter++;
+	counter++;
 	if (Node == NULL)
 		return 0;
 	else
@@ -159,9 +161,9 @@ struct Node* maxValueNode(struct Node* node)
 }
 
 //-----------------------
-struct Node* deleteNode(struct Node* root, int key,int first_node)
+struct Node* deleteNode(struct Node* root, int key, int first_node)
 {
-  counter++;
+	counter++;
 	//cout << "STEP: " << first_node << endl;
 	// base case 
 	if (root == NULL) return root;
@@ -169,12 +171,12 @@ struct Node* deleteNode(struct Node* root, int key,int first_node)
 	// If the key to be deleted is smaller than the root's key, 
 	// then it lies in left subtree 
 	if (key < root->data)
-		root->left = deleteNode(root->left, key,first_node);
+		root->left = deleteNode(root->left, key, first_node);
 
 	// If the key to be deleted is greater than the root's key, 
 	// then it lies in right subtree 
 	else if (key > root->data)
-		root->right = deleteNode(root->right, key,first_node);
+		root->right = deleteNode(root->right, key, first_node);
 
 	// if key is same as root's key, then This is the node 
 	// to be deleted 
@@ -205,7 +207,7 @@ struct Node* deleteNode(struct Node* root, int key,int first_node)
 			// Delete the inorder successor 
 			root->right = deleteNode(root->right, temp->data, first_node);
 		}
-		else if (key<first_node)//if key is smaller use left subtree rules(delete key and swap with left biggest subtree value)
+		else if (key < first_node)//if key is smaller use left subtree rules(delete key and swap with left biggest subtree value)
 		{
 			struct Node* temp = maxValueNode(root->left);
 
@@ -225,7 +227,7 @@ void Menu() {
 	int choice = 0, size = 0, input_number;
 	string txtname;
 	struct Node* root = NULL;
-  int* tree = new int[size];
+	int* tree = new int[size];
 
 	while (true)
 	{
@@ -239,14 +241,14 @@ void Menu() {
 		{
 			cout << "Input a size of Binary Tree: ";
 			cin >> size;
-      int* tree = new int[size];
-      break;
+			int* tree = new int[size];
+			break;
 		}
 		else if (choice == 2)
 		{
 			cout << "Input file name (with extension - .txt): ";
 			cin >> txtname;
-      break;
+			break;
 		}
 		else
 			cout << " Error! Wrong number! Try again.\n";
@@ -263,12 +265,12 @@ void Menu() {
 		if (fd.is_open())
 		{
 			fd >> size;
-      int* tree = new int[size];
+			int* tree = new int[size];
 			for (int i = 0; i < size; i++)
-      {
+			{
 				fd >> tree[i];// Now we have our binary tree numbers stored in tree[] array
-      }
-      fd.close();
+			}
+			fd.close();
 		}//tree[] values are okay inside if
 	}
 	for (int i = 0; i < size; i++)
@@ -279,7 +281,7 @@ void Menu() {
 
 	while (true)
 	{
-    counter = 0;
+		counter = 0;
 		system("cls");
 
 		cout << "             MENU\n";
@@ -288,7 +290,7 @@ void Menu() {
 		cout << "#3. Find element in Binary Tree\n";
 		cout << "#4. What's height of Binary Tree?\n";
 		cout << "#5. Show Binary Tree\n";
-    cout << "#6. Save Binary Tree to File\n";
+		cout << "#6. Save Binary Tree to File\n";
 		cout << "#7. Exit\n";
 
 		cin >> choice;
@@ -298,7 +300,6 @@ void Menu() {
 			cout << "Add new element to Binary Tree\nEnter number:";
 			cin >> input_number;
 			insert(root, input_number);
-      cout << "Total STEPS: " << counter << endl;
 		}
 		else if (choice == 2)
 		{
@@ -306,8 +307,7 @@ void Menu() {
 
 			cin >> input_number;
 			int firstnode = root->data;//first tree element
-			root = deleteNode(root, input_number,firstnode);
-      cout << "Total STEPS: " << counter << endl;
+			root = deleteNode(root, input_number, firstnode);
 		}
 		else if (choice == 3)
 		{
@@ -319,13 +319,11 @@ void Menu() {
 				cout << "Number " << input_number << " was found!\n";
 			}
 			else { cout << " Number doesn't exist.. \n"; }
-      cout << "Total STEPS: " << counter << endl;
 		}
 		else if (choice == 4)
 		{
 			cout << "Show height of Binary Tree\n";
 			cout << "Height of the tree: " << maxDepth(root) << endl;
-      cout << "Total STEPS: " << counter << endl;
 		}
 		else if (choice == 5)
 		{
@@ -335,19 +333,19 @@ void Menu() {
 		else if (choice == 6)
 		{
 			cout << "Save Binary tree to file.\n";
-      cout << "Input result file name (with extension - .txt): ";
+			cout << "Input result file name (with extension - .txt): ";
 			cin >> txtname;
 
-  		ofstream fr;
-      fr.open(txtname, std::ios_base::app);
+			ofstream fr;
+			fr.open(txtname, std::ios_base::app);
 
-      print_to_File(root, 0, fr);
+			print_to_File(root, 0, fr);
 
-      fr.close();
+			fr.close();
 
 			cout << "\nBinary tree SAVED.\n";
 
-    }
+		}
 		else if (choice == 7)
 		{
 			exit(0); // breaking from while loop - exit
@@ -355,6 +353,7 @@ void Menu() {
 		else {
 			cout << "Wrong number!\n"; // cia reikia iterpti exita (Return 0???)
 		}
+		cout << "Total STEPS: " << counter << endl;
 		system("pause");
 	}
 }
@@ -363,6 +362,6 @@ int main()
 	Menu();
 }
 /*
-test data insert: 1 13 15 10 26 8 14 29 6 20 16 12 4 24 7 5 
+test data insert: 1 13 15 10 26 8 14 29 6 20 16 12 4 24 7 5
 deletes: 2 7 5 2 14 5 2 10 5 2 26 5
 */
