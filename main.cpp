@@ -5,6 +5,8 @@
 
 using namespace std;
 
+int counter(0);
+
 // A binary tree node  
 struct Node
 {
@@ -45,6 +47,29 @@ void print2DUtil(Node* root, int space)
 	print2DUtil(root->left, space);
 }
 
+void print_to_File(Node* root, int space, ofstream &fr)
+{
+	// Base case  
+	if (root == NULL)
+		return;
+
+	// Increase distance between levels  
+	space += COUNT;
+
+	// Process right child first  
+	print_to_File(root->right, space, fr);
+
+	// Print current node after space  
+	// print to file  
+	fr << endl;
+	for (int i = COUNT; i < space; i++)
+		fr << " ";
+	fr << root->data << "\n";
+
+	// Process left child  
+	print_to_File(root->left, space, fr);
+}
+
 // Wrapper over print2DUtil()  
 void print2D(Node* root)
 {
@@ -59,6 +84,7 @@ void print2D(Node* root)
 }
 struct Node* insert(struct Node* Node, int data)
 {
+  counter++;
 	/* If the tree is empty, return a new node */
 	if (Node == NULL) return newNode(data);
 
@@ -75,6 +101,8 @@ struct Node* insert(struct Node* Node, int data)
 
 bool ifNodeExists(struct Node* Node, int key)
 {
+  counter++;
+
 	if (Node == NULL)
 		return false;
 
@@ -92,6 +120,7 @@ bool ifNodeExists(struct Node* Node, int key)
 
 int maxDepth(Node* Node)
 {
+  counter++;
 	if (Node == NULL)
 		return 0;
 	else
@@ -132,7 +161,8 @@ struct Node* maxValueNode(struct Node* node)
 //-----------------------
 struct Node* deleteNode(struct Node* root, int key,int first_node)
 {
-	cout << "STEP: " << first_node << endl;
+  counter++;
+	//cout << "STEP: " << first_node << endl;
 	// base case 
 	if (root == NULL) return root;
 
@@ -195,8 +225,9 @@ void Menu() {
 	int choice = 0, size = 0, input_number;
 	string txtname;
 	struct Node* root = NULL;
+  int* tree = new int[size];
 
-	while (choice != 1)
+	while (true)
 	{
 		system("cls");
 		cout << "             MENU\n";
@@ -208,43 +239,47 @@ void Menu() {
 		{
 			cout << "Input a size of Binary Tree: ";
 			cin >> size;
+      int* tree = new int[size];
+      break;
 		}
 		else if (choice == 2)
 		{
 			cout << "Input file name (with extension - .txt): ";
 			cin >> txtname;
+      break;
 		}
 		else
 			cout << " Error! Wrong number! Try again.\n";
 	}
-	int* tree = new int[size];
 
-	if (choice == 1)
+	if (choice == 1) // reading from cmd/terminal to array
 	{
 		for (int i = 0; i < size; i++)
 			cin >> tree[i];
 	}
-	else if (choice == 2)
+	else if (choice == 2) // reading from file to array
 	{
 		ifstream fd(txtname);
 		if (fd.is_open())
 		{
 			fd >> size;
-
+      int* tree = new int[size];
 			for (int i = 0; i < size; i++)
-				fd >> tree[i];
-		}
-		fd.close();
-	} // Now we have our binary tree numbers stored in tree[] array
-
+      {
+				fd >> tree[i];// Now we have our binary tree numbers stored in tree[] array
+      }
+      fd.close();
+		}//tree[] values are okay inside if
+	}
 	for (int i = 0; i < size; i++)
 	{
 		if (i == 0) root = insert(root, tree[i]);
-		else insert(root, tree[i]);
-	}// Now we have our binary tree numbers stored in STRUCTURE
+		else insert(root, tree[i]);// Now we have our binary tree numbers stored in STRUCTURE
+	}
 
 	while (true)
 	{
+    counter = 0;
 		system("cls");
 
 		cout << "             MENU\n";
@@ -253,7 +288,8 @@ void Menu() {
 		cout << "#3. Find element in Binary Tree\n";
 		cout << "#4. What's height of Binary Tree?\n";
 		cout << "#5. Show Binary Tree\n";
-		cout << "#6. Exit\n";
+    cout << "#6. Save Binary Tree to File\n";
+		cout << "#7. Exit\n";
 
 		cin >> choice;
 
@@ -262,6 +298,7 @@ void Menu() {
 			cout << "Add new element to Binary Tree\nEnter number:";
 			cin >> input_number;
 			insert(root, input_number);
+      cout << "Total STEPS: " << counter << endl;
 		}
 		else if (choice == 2)
 		{
@@ -270,6 +307,7 @@ void Menu() {
 			cin >> input_number;
 			int firstnode = root->data;//first tree element
 			root = deleteNode(root, input_number,firstnode);
+      cout << "Total STEPS: " << counter << endl;
 		}
 		else if (choice == 3)
 		{
@@ -281,20 +319,38 @@ void Menu() {
 				cout << "Number " << input_number << " was found!\n";
 			}
 			else { cout << " Number doesn't exist.. \n"; }
+      cout << "Total STEPS: " << counter << endl;
 		}
 		else if (choice == 4)
 		{
 			cout << "Show height of Binary Tree\n";
 			cout << "Height of the tree: " << maxDepth(root) << endl;
+      cout << "Total STEPS: " << counter << endl;
 		}
 		else if (choice == 5)
 		{
-			cout << "Show Binary Tree\n";
+			cout << "Show Binary Tree in Console\n";
 			print2D(root);
 		}
 		else if (choice == 6)
 		{
-			exit(1); // breaking from while loop - exit
+			cout << "Save Binary tree to file.\n";
+      cout << "Input result file name (with extension - .txt): ";
+			cin >> txtname;
+
+  		ofstream fr;
+      fr.open(txtname, std::ios_base::app);
+
+      print_to_File(root, 0, fr);
+
+      fr.close();
+
+			cout << "\nBinary tree SAVED.\n";
+
+    }
+		else if (choice == 7)
+		{
+			exit(0); // breaking from while loop - exit
 		}
 		else {
 			cout << "Wrong number!\n"; // cia reikia iterpti exita (Return 0???)
@@ -305,5 +361,8 @@ void Menu() {
 int main()
 {
 	Menu();
-}//test data insert: 1 13 15 10 26 8 14 29 6 20 16 12 4 24 7 5 
-//deletes: 2 7 5 2 14 5 2 10 5 2 26 5
+}
+/*
+test data insert: 1 13 15 10 26 8 14 29 6 20 16 12 4 24 7 5 
+deletes: 2 7 5 2 14 5 2 10 5 2 26 5
+*/
