@@ -6,13 +6,13 @@ Parašyti programą, kuri iš duotos skaičių aibės suformuotų dvejetainį pa
 Programos naudojimas:
 Pradėjus programos darbą, vartotojas turi suvesti pradinius duomenis į konsolės langą arba nuskaityti iš atitinkamo failo.
 Teisingai suvedus duomenis, būsime nukelti į pagrindinį menių, kur galėsime:
-    1. Pridėti naują elementą į medį.
-    2. Ištrinti esamą elementą.
-    3. Surasti elementą.
-    4. Parodyti medžio aukštį.
-    5. Išvesti dvejetainį paieškos medį ekrane.
-    6. Išsaugoti medį į failą.
-    7. Baigti darbą.
+1. Pridėti naują elementą į medį.
+2. Ištrinti esamą elementą.
+3. Surasti elementą.
+4. Parodyti medžio aukštį.
+5. Išvesti dvejetainį paieškos medį ekrane.
+6. Išsaugoti medį į failą.
+7. Baigti darbą.
 Į menių funkcijas galima kreiptis neribotą kartų kiekį.
 
 
@@ -23,10 +23,10 @@ Menu() - funkcijoje atvaizduojama vartotojo sąsaja. Menių realizavimui naudoja
 Naudojama rekursyvi insert() funkcija.
 
     2. Viršūnės šalinimo algoritmas
-1. Rekursijos  pagalba, kuri nukreipia paiešką į dešinįjį arba kairįjį pomedį, surandame viršūnę kurią norime ištrinti.
-2. Jei iš medžio šaliname viršūnę – lapą (neturi vaikų) arba kuri turi tik vieną vaiką, tai šią viršūnę atkabiname nuo jos tėvo ir sunaikiname (jei turi vaiką tai pakeičiame vaiku saugodami jį temp kintamajame).
-3. Jei šaliname dešiniojo pomedžio viršūnę, kuri turi abu vaikus, tai šią viršūnę keičiame jos dešinės šakos mažiausią reikšmę turinčia viršūne (randama naudojant minValueNode), o pačią sunaikiname.
-4. Jei šaliname kairiojo pomedžio viršūnę, kuri turi abu vaikus, tai šią viršūnę keičiame jos kairės šakos didžiausią reikšmę turinčia viršūne (randama naudojant maxValueNode), o pačią sunaikiname.
+- Rekursijos  pagalba, kuri nukreipia paiešką į dešinįjį arba kairįjį pomedį, surandame viršūnę kurią norime ištrinti.
+- Jei iš medžio šaliname viršūnę – lapą (neturi vaikų) arba kuri turi tik vieną vaiką, tai šią viršūnę atkabiname nuo jos tėvo ir sunaikiname (jei turi vaiką tai pakeičiame vaiku saugodami jį temp kintamajame).
+- Jei šaliname dešiniojo pomedžio viršūnę, kuri turi abu vaikus, tai šią viršūnę keičiame jos dešinės šakos mažiausią reikšmę turinčia viršūne (randama naudojant minValueNode), o pačią sunaikiname.
+- Jei šaliname kairiojo pomedžio viršūnę, kuri turi abu vaikus, tai šią viršūnę keičiame jos kairės šakos didžiausią reikšmę turinčia viršūne (randama naudojant maxValueNode), o pačią sunaikiname.
 Naudojama deleteNode() funkcija. Į ją taip pat įeina minValueNode ir MaxValueNode funkcijos.
 
     3. Norint surasti įvestą elementą, pirmiausia palyginame jį su viršūne. Jei įvestis atitinka viršūnę – ją grąžiname. Jei įvestis didesnė už viršūnę, atliekama rekursija dešiniajam pomedžiui. Priešingu atveju, einame į kairįjį pomedį.
@@ -34,18 +34,18 @@ Naudojama rekursyvi ifNodeExists() funkcija.
 
     4. Jeigu medis tuščias, grąžinamas 0;
 Kitu atveju:
-    a) Rekursyviai gaunamas maksimalus kairiojo pomedžio gylis.
+    - Rekursyviai gaunamas maksimalus kairiojo pomedžio gylis.
 Kviečiama maxDepth( node->left )
-    b) Rekursyviai gaunamas maksimalus dešiniojo pomedžio gylis.
+    - Rekursyviai gaunamas maksimalus dešiniojo pomedžio gylis.
 Kviečiama maxDepth( node ->right )
-    c) Iš kairiojo ir dešinio pomedžio gylių dydžių paimamas didesnis ir pridedamas 1-as, kadangi neužskaityta esama viršūnė.
+    - Iš kairiojo ir dešinio pomedžio gylių dydžių paimamas didesnis ir pridedamas 1-as, kadangi neužskaityta esama viršūnė.
 Naudojama rekursyvi maxDepth() funkcija.
 
 
     5. Paieškos medžio atvaizdavimas
-• Rekursija naudojama suskaičiuoti kiek tarpų pridėti prieš kiekvienos medžio reikšmės skaičiaus atvaizdavimą, pirma paimant dešiniąsias pomedžio reikšmes (pirma  dešinės, veliau kairės pusės elementus), šaknį ir kairiojo pomedžio reikšmes.
-• Atvaizduotos reikšmės paskirstomos taip, kad pirma reikšmė kairėje konsolės (failo) pusėje yra medžio šaknis; į viršų nuo jos pasiskirsto dešiniojo pomedžio viršūnės; į apačią (nuo šaknies) pasiskirsto kairiojo pomedžio viršūnės.
-	Naudojama print2D() apglėbiamoji funkcija, kurioje yra rekursyvi print2DUtil() funkcija.
+- Rekursija naudojama suskaičiuoti kiek tarpų pridėti prieš kiekvienos medžio reikšmės skaičiaus atvaizdavimą, pirma paimant dešiniąsias pomedžio reikšmes (pirma  dešinės, veliau kairės pusės elementus), šaknį ir kairiojo pomedžio reikšmes.
+- Atvaizduotos reikšmės paskirstomos taip, kad pirma reikšmė kairėje konsolės (failo) pusėje yra medžio šaknis; į viršų nuo jos pasiskirsto dešiniojo pomedžio viršūnės; į apačią (nuo šaknies) pasiskirsto kairiojo pomedžio viršūnės.
+Naudojama print2D() apglėbiamoji funkcija, kurioje yra rekursyvi print2DUtil() funkcija.
 
     6. Medis išsaugojamas tokiu pat principu kaip ir dvejetainio paieškos medžio atvaizdavimas t.y. praeitas, 5 punktas. Tiesiog čia vaizdas neatvaizduojamas konsolėje, o įrašomas į failą.
 Naudojama rekursyvi print_to_File() funkcija.
