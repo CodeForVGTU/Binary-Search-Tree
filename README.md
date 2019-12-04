@@ -1,4 +1,4 @@
-# Binary-Search-Tree
+# Binary-Search-Tree (LT)
 
 ## Užduotis:
 Parašyti programą, kuri iš duotos skaičių aibės suformuotų dvejetainį paieškos medį. Dvejetainį paieškos medį realizuoti dinaminiu masyvu. Parašyti atskiras funkcijas, kurios realizuotų operacijas: pridėti naują elementą, pašalinti elementą, surasti elementą, nustatyti aukštį, išvesti dvejetainį paieškos medį ekrane. Programoje realizuoti dialogą su naudotoju: aiškus ir patogus meniu operacijų pasirinkimui, galimybė pasirinkti duomenų įvedimą konsolėje ar iš failo, išvedimą į ekraną ar failą. Dvejetainį paieškos medį po bet kurio pakeitimo vizualiai aiškiai išvesti ekrane. Programa turi skaičiuoti kiek žingsnių buvo atlikta tam tikro veiksmo vykdymui. Šie duomenys reikalingi programos sudėtingumui ir efektyvumui nustatyti.
