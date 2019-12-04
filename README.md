@@ -23,10 +23,10 @@ Menu() - funkcijoje atvaizduojama vartotojo sąsaja. Menių realizavimui naudoja
 Naudojama rekursyvi insert() funkcija.
 
 2. Viršūnės šalinimo algoritmas
-- Rekursijos  pagalba, kuri nukreipia paiešką į dešinįjį arba kairįjį pomedį, surandame viršūnę kurią norime ištrinti.
-- Jei iš medžio šaliname viršūnę – lapą (neturi vaikų) arba kuri turi tik vieną vaiką, tai šią viršūnę atkabiname nuo jos tėvo ir sunaikiname (jei turi vaiką tai pakeičiame vaiku saugodami jį temp kintamajame).
-- Jei šaliname dešiniojo pomedžio viršūnę, kuri turi abu vaikus, tai šią viršūnę keičiame jos dešinės šakos mažiausią reikšmę turinčia viršūne (randama naudojant minValueNode), o pačią sunaikiname.
-- Jei šaliname kairiojo pomedžio viršūnę, kuri turi abu vaikus, tai šią viršūnę keičiame jos kairės šakos didžiausią reikšmę turinčia viršūne (randama naudojant maxValueNode), o pačią sunaikiname.
+    - Rekursijos  pagalba, kuri nukreipia paiešką į dešinįjį arba kairįjį pomedį, surandame viršūnę kurią norime ištrinti.
+    - Jei iš medžio šaliname viršūnę – lapą (neturi vaikų) arba kuri turi tik vieną vaiką, tai šią viršūnę atkabiname nuo jos tėvo ir sunaikiname (jei turi vaiką tai pakeičiame vaiku saugodami jį temp kintamajame).
+    - Jei šaliname dešiniojo pomedžio viršūnę, kuri turi abu vaikus, tai šią viršūnę keičiame jos dešinės šakos mažiausią reikšmę turinčia viršūne (randama naudojant minValueNode), o pačią sunaikiname.
+    - Jei šaliname kairiojo pomedžio viršūnę, kuri turi abu vaikus, tai šią viršūnę keičiame jos kairės šakos didžiausią reikšmę turinčia viršūne (randama naudojant maxValueNode), o pačią sunaikiname.
 Naudojama deleteNode() funkcija. Į ją taip pat įeina minValueNode ir MaxValueNode funkcijos.
 
 3. Norint surasti įvestą elementą, pirmiausia palyginame jį su viršūne. Jei įvestis atitinka viršūnę – ją grąžiname. Jei įvestis didesnė už viršūnę, atliekama rekursija dešiniajam pomedžiui. Priešingu atveju, einame į kairįjį pomedį.
@@ -42,8 +42,8 @@ Kviečiama maxDepth( node ->right )
 Naudojama rekursyvi maxDepth() funkcija.
 
 5. Paieškos medžio atvaizdavimas
-- Rekursija naudojama suskaičiuoti kiek tarpų pridėti prieš kiekvienos medžio reikšmės skaičiaus atvaizdavimą, pirma paimant dešiniąsias pomedžio reikšmes (pirma  dešinės, veliau kairės pusės elementus), šaknį ir kairiojo pomedžio reikšmes.
-- Atvaizduotos reikšmės paskirstomos taip, kad pirma reikšmė kairėje konsolės (failo) pusėje yra medžio šaknis; į viršų nuo jos pasiskirsto dešiniojo pomedžio viršūnės; į apačią (nuo šaknies) pasiskirsto kairiojo pomedžio viršūnės.
+    - Rekursija naudojama suskaičiuoti kiek tarpų pridėti prieš kiekvienos medžio reikšmės skaičiaus atvaizdavimą, pirma paimant dešiniąsias pomedžio reikšmes (pirma  dešinės, veliau kairės pusės elementus), šaknį ir kairiojo pomedžio reikšmes.
+    - Atvaizduotos reikšmės paskirstomos taip, kad pirma reikšmė kairėje konsolės (failo) pusėje yra medžio šaknis; į viršų nuo jos pasiskirsto dešiniojo pomedžio viršūnės; į apačią (nuo šaknies) pasiskirsto kairiojo pomedžio viršūnės.
 Naudojama print2D() apglėbiamoji funkcija, kurioje yra rekursyvi print2DUtil() funkcija.
 
 6. Medis išsaugojamas tokiu pat principu kaip ir dvejetainio paieškos medžio atvaizdavimas t.y. praeitas, 5 punktas. Tiesiog čia vaizdas neatvaizduojamas konsolėje, o įrašomas į failą.
