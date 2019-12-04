@@ -76,10 +76,12 @@ void print_to_File(Node* root, int space, ofstream& fr)
 // Wrapper over print2DUtil()  
 void print2D(Node* root)
 {
+  counter++;
 	// Pass initial space count as 0  
 	print2DUtil(root, 0);
 }  struct Node* newNode(int item)
 {
+  counter++;
 	struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
 	temp->data = item;
 	temp->left = temp->right = NULL;
@@ -142,6 +144,7 @@ int maxDepth(Node* Node)
 // FOR DELETING ELEMENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 struct Node* minValueNode(struct Node* node)
 {
+  counter++;
 	struct Node* current = node;
 
 	/* loop down to find the leftmost leaf */
@@ -152,6 +155,7 @@ struct Node* minValueNode(struct Node* node)
 }
 struct Node* maxValueNode(struct Node* node)
 {
+  counter++;
 	struct Node* current = node;
 
 	/* loop down to find the leftmost leaf */
@@ -362,7 +366,3 @@ int main()
 {
 	Menu();
 }
-/*
-test data insert: 1 13 15 10 26 8 14 29 6 20 16 12 4 24 7 5
-deletes: 2 7 5 2 14 5 2 10 5 2 26 5
-*/
